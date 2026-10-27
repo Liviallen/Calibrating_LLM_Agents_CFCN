@@ -1,0 +1,5 @@
+prompt_variant,optimal_weight,weight_percentage,prompt_text
+nav2,0.5037928354528473,50.37928354528473,"You rely only weakly on comparing benefits and costs, acting mainly when the situation is clearly favorable. You tend to favor risky options, accepting greater uncertainty in pursuit of higher potential rewards."
+nav1,0.2849459188819743,28.49459188819743,"You rely only weakly on comparing benefits and costs, acting mainly when the situation is clearly favorable. You tend to avoid risky options, preferring choices with more certain outcomes even when they may offer lower potential rewards."
+nav3,0.12530231268435588,12.530231268435587,"You carefully weigh expected benefits against associated costs when making decisions. You tend to avoid risky options, preferring choices with more certain outcomes even when they may offer lower potential rewards."
+nav4,0.08595893298082265,8.595893298082265,"You carefully weigh expected benefits against associated costs when making decisions. You tend to favor risky options, accepting greater uncertainty in pursuit of higher potential rewards."

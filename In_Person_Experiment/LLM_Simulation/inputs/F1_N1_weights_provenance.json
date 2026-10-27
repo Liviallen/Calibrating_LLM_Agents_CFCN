@@ -1,0 +1,5 @@
+{
+  "source": "Kremer_Debo_Simulation/results/F1_N1/cfcn/training/weights.csv",
+  "sha256": "0a7eddfd51e156534e8341b42f58c57c8b8e0f586c445a96c4fc2c31ecba8fe5",
+  "note": "User-requested reuse of the original F1_N1 CFCN navigation weights with the new in-person F1 formations; no refitting."
+}

@@ -1,0 +1,97 @@
+=== MESSAGE 1 | USER: instruction + formation ===
+# Instructions
+
+You are about to participate in an experiment on decision making. The experiment is designed not to test your knowledge, but to learn about your decision making.
+
+You will complete **4 trial rounds followed by 25 main rounds**. The practice rounds are designed to help you become familiar with the survey and **will not affect your payment**.
+
+For completing the survey, you will receive a **base payment of HK$70.00**. You may also earn **additional bonus payments** based on your decisions in the 25 main rounds.
+
+Your bonus will be based on **your average payoff across the 25 main rounds**. Each experimental dollar included in your payment equals one token, and each token you earn is worth **HK$12.00**. Your final payment will therefore consist of your **HK$70.00 base payment plus any bonus payment earned from the main rounds**.
+
+## Your Task in Each Round
+
+A firm offers a new product to a market of **4 consumers  (you and 3 other people in this room)**.
+
+You remain with the same 3 other consumers throughout all 4 trial rounds and 25 main rounds. Your arrival order and conditions are randomly assigned again in each round.
+
+- The 4 consumers arrive in a random order.
+- Each consumer chooses **ORDER** or **DO NOT ORDER** once.
+- Before deciding, you will see how many consumers arrived before you, how many ordered, and how many did not order.
+- After all decisions are made, production is scheduled in one-week slots beginning at Week 0, following the order in which purchases were placed.
+- Every round starts with a new product and a new **$4.00 endowment**.
+
+## Product Value
+
+The product has one value shared by all 4 consumers (including you) in that round:
+
+- **50% probability:** high value of **$3.50**
+- **50% probability:** low value of **$0.00**
+
+Before considering information from the current round, the expected product value is:
+
+**50% × $3.50 + 50% × $0.00 = $1.75**
+
+The product value is drawn once per round. A new value is drawn in the next round.
+
+## Consumer Type
+
+Every consumer is **uninformed**. No consumer sees the product’s true value before deciding. The true value is revealed only after the decisions for the round are complete.
+
+## Understanding the Wait Times
+
+Before deciding, you will see:
+
+- **Queuing time:** Production begins in Week 0. Each order requires one week to produce, and each order placed before yours adds one week before production of your own order begins. Therefore, your queuing time equals the number of earlier orders: 0–3 weeks.
+- **Shipping time:** either 0 or 1 week. In each round, exactly 2 consumers have 0 shipping weeks and exactly 2 have 1 shipping week. These conditions are randomly assigned again each round, separately from arrival order. Before assignment, each consumer has a 50% chance of each shipping time. Each consumer sees only their own shipping time before deciding.
+- **Total wait time:** queuing time + shipping time.
+- **Waiting cost:** total wait time × **$1.00**, paid only if you order.
+
+For example, suppose your decision page shows: “3 consumers arrived before you: 1 ordered, 2 did not.” Your queuing time is 1 week: the earlier order is produced in the Week 0 slot and your order is produced in the Week 1 slot.
+
+## Your Decision and Payoff
+
+- **DO NOT ORDER:** You keep your $4.00 endowment.\
+  **Payoff = $4.00**
+- **ORDER:** You pay the waiting cost and receive the product value.\
+  **Payoff = $4.00 − total waiting cost + product value**
+
+Example: if total wait time is 2 weeks:
+
+- Low-value product: **$4.00 − $2.00 + $0.00 = $2.00**
+- High-value product: **$4.00 − $2.00 + $3.50 = $5.50**
+In sum, you are a consumer participating in a repeated market experiment in which you decide in each round whether to order a product from a firm under uncertainty about its value and with a delay before delivery.
+In each round, you are part of a fixed group of 4 consumers, and the experiment consists of multiple independent rounds (25 in total). At the start of every round, the product's quality (high or low) is randomly determined and remains the same for all consumers in that round.
+All consumers are uninformed: no consumer knows the product's quality before making a decision. The product has a 50% probability of high quality and a 50% probability of low quality, and these probabilities and the fact that all consumers are uninformed are common knowledge.
+All consumers arrive in a random order. When you arrive, you learn your exact arrival rank and are quoted a total wait time consisting of queuing time and shipping time. The queuing time equals the number of orders placed before you, with one week for each such order; the shipping time is exogenous. Both components contribute to your total waiting cost. You therefore know how many consumers arrived before you and how many of them ordered, but you do not observe their individual decisions directly. The firm is non-strategic and follows a fixed rule: it produces one unit per week and delivers in first-in-first-out order after all decisions are made.
+Within each round, the sequence is: product quality and consumer types are realized → consumers arrive in random order → each consumer observes arrival rank, queuing time, shipping time, and total wait time, then makes a one-time decision to order or not → after all decisions, production and delivery occur. Decisions cannot be revised. The $4.00 endowment is reset each round, and earnings accumulate across rounds. You also have access to information from past rounds (e.g., wait times, types, decisions, and outcomes), but each round is otherwise independent.
+
+
+=== MESSAGE 2 | USER: instance details + navigation + answer request ===
+You have $4.00.
+
+The firm has introduced the new A-Pod!
+
+4 consumers (including you) are making purchase decisions in a randomly assigned sequence.
+
+0 consumers arrived before you: 0 ordered, 0 did not.
+
+None knew the product value before deciding.
+
+The firm offers you a total wait time of 1 week.
+
+This total wait time consists of 0 weeks of queuing time and 1 week of shipping time.
+
+You are UNINFORMED.
+
+The product will be a big hit ($3.5) or a relative disaster ($0.0).
+
+In sum, you are a consumer participating in a repeated market experiment in which you decide in each round whether to order a product from a firm under uncertainty about its value and with a delay before delivery.
+In each round, you are part of a fixed group of 4 consumers, and the experiment consists of multiple independent rounds (25 in total). At the start of every round, the product's quality (high or low) is randomly determined and remains the same for all consumers in that round.
+All consumers are uninformed: no consumer knows the product's quality before making a decision. The product has a 50% probability of high quality and a 50% probability of low quality, and these probabilities and the fact that all consumers are uninformed are common knowledge.
+All consumers arrive in a random order. When you arrive, you learn your exact arrival rank and are quoted a total wait time consisting of queuing time and shipping time. The queuing time equals the number of orders placed before you, with one week for each such order; the shipping time is exogenous. Both components contribute to your total waiting cost. You therefore know how many consumers arrived before you and how many of them ordered, but you do not observe their individual decisions directly. The firm is non-strategic and follows a fixed rule: it produces one unit per week and delivers in first-in-first-out order after all decisions are made.
+Within each round, the sequence is: product quality and consumer types are realized → consumers arrive in random order → each consumer observes arrival rank, queuing time, shipping time, and total wait time, then makes a one-time decision to order or not → after all decisions, production and delivery occur. Decisions cannot be revised. The $4.00 endowment is reset each round, and earnings accumulate across rounds. You also have access to information from past rounds (e.g., wait times, types, decisions, and outcomes), but each round is otherwise independent.
+
+You rely only weakly on comparing benefits and costs, acting mainly when the situation is clearly favorable. You tend to avoid risky options, preferring choices with more certain outcomes even when they may offer lower potential rewards. You give little consideration to earlier consumers' behavior as a potential source of evidence, making no use of the rules of the decision environment to determine whether their decisions are informative about what you observe and placing little weight on any resulting implication.
+
+Given your stepwise explanation first and then put the final decision (ORDER/NOT ORDER) in <answer></answer>.

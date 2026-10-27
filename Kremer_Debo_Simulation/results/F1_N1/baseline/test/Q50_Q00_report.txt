@@ -1,0 +1,204 @@
+================================================================================
+KREMER-DEBO ANALYSIS - PROBIT REGRESSION
+Python Translation of kremer-debo_analysis - probit.do
+================================================================================
+
+Loading data...
+
+********************************************************************************
+** Analysis run on Original dataset
+** Method: xtprobit subject_choice vars, re
+********************************************************************************
+
+Number of obs    = 1,707
+Number of groups = 25
+
+// Primary analysis: empty restaurant syndrome
+Fitting random-effects probit regression...
+
+===========================================================================
+Random-effects probit regression
+===========================================================================
+Log likelihood   = -925.67597
+sigma_u          = 0.3152425
+rho              = 0.0903946
+
+---------------------------------------------------------------------------
+Variable         Coefficient     Std.Err.          z      P>|z|
+---------------------------------------------------------------------------
+const               1.611668    0.1835878       8.78     0.0000
+w2                 -1.354514    0.1540275      -8.79     0.0000
+w3                 -2.745500    0.1743282     -15.75     0.0000
+w4                 -8.273346          N/A        N/A        N/A
+w1q50              -1.142051    0.2088448      -5.47     0.0000
+w2q50              -0.365230    0.1745319      -2.09     0.0364
+w3q50               0.633727    0.2061454       3.07     0.0021
+w4q50               5.413541          N/A        N/A        N/A
+---------------------------------------------------------------------------
+
+// Verify purchase probabilities when w=1:
+display normprob(_b[_cons]) // Q00
+   0.94648287
+display normprob(_b[_cons] + _b[w1q50]) // Q50
+   0.68068555
+
+======================================================================
+HYPOTHESIS TEST: H1 - Primary (ORIGINAL): w1q50 = 0
+======================================================================
+
+test w1q50 = 0
+
+ ( 1)  [subject_choice]w1q50 = 0
+
+           chi2(  1) =      29.90
+         Prob > chi2 =     0.0000
+
+// Exact p-value:
+   4.540683431010e-08
+
+
+// Secondary analysis: comparing slopes
+Fitting random-effects probit regression...
+
+===========================================================================
+Random-effects probit regression
+===========================================================================
+Log likelihood   = -926.59626
+sigma_u          = 0.3141682
+rho              = 0.0898348
+
+---------------------------------------------------------------------------
+Variable         Coefficient     Std.Err.          z      P>|z|
+---------------------------------------------------------------------------
+const               3.015290    0.2286816      13.19     0.0000
+wait_time          -1.383451    0.0846854     -16.34     0.0000
+q50                -2.023097    0.2606783      -7.76     0.0000
+wait_time_q50       0.852447    0.0991902       8.59     0.0000
+---------------------------------------------------------------------------
+
+======================================================================
+HYPOTHESIS TEST: H2 - Secondary (ORIGINAL): wait_time_q50 = 0
+======================================================================
+
+test wait_time_q50 = 0
+
+ ( 1)  [subject_choice]wait_time_q50 = 0
+
+           chi2(  1) =      73.86
+         Prob > chi2 =     0.0000
+
+// Exact p-value:
+   8.394565192533e-18
+
+
+********************************************************************************
+** AI Replication: GPT-5.4
+** Method: probit subject_choice vars, vce(cluster cohort_id)
+********************************************************************************
+
+Number of obs    = 1,731
+Number of clusters = 621
+
+// Primary analysis: empty restaurant syndrome
+  Omitting w3q50: redundant or constant column in this sample
+  Omitting w4q50: redundant or constant column in this sample
+  Note: Q00, wait=1 has only one outcome; saturated cell coefficients may show separation.
+  Note: Q00, wait=2 has only one outcome; saturated cell coefficients may show separation.
+  Note: Q50, wait=1 has only one outcome; saturated cell coefficients may show separation.
+  Note: Q50, wait=2 has only one outcome; saturated cell coefficients may show separation.
+  Note: Q50, wait=3 has only one outcome; saturated cell coefficients may show separation.
+  Note: Q50, wait=4 has only one outcome; saturated cell coefficients may show separation.
+  Method bfgs failed: LinAlgError: Singular matrix
+
+===========================================================================
+Probit regression
+(Std. err. adjusted for clusters in cohort_id)
+===========================================================================
+Log pseudolikelihood = -0.00000
+Pseudo R2            = 1.0000
+
+---------------------------------------------------------------------------
+Variable         Coefficient     Std.Err.          z      P>|z|
+---------------------------------------------------------------------------
+const               7.560377    0.0091919     822.51     0.0000
+w2                -15.432673    0.0180195    -856.44     0.0000
+w3                -15.198808    0.0177453    -856.50     0.0000
+w4                -14.990428    0.0295908    -506.59     0.0000
+w1q50               0.609909    0.0114680      53.18     0.0000
+w2q50              -0.328639    0.0120221     -27.34     0.0000
+---------------------------------------------------------------------------
+
+// Verify purchase probabilities when w=1:
+display normprob(_b[_cons]) // Q00
+   1.00000000
+display normprob(_b[_cons] + _b[w1q50]) // Q50
+   1.00000000
+
+======================================================================
+HYPOTHESIS TEST: H1 - Primary (GPT-5.4): w1q50 = 0
+======================================================================
+
+test w1q50 = 0
+
+ ( 1)  [subject_choice]w1q50 = 0
+
+           chi2(  1) =    2828.48
+         Prob > chi2 =     0.0000
+
+// Exact p-value:
+   0.000000000000e+00
+
+
+// Secondary analysis: comparing slopes
+  Note: Q00, wait=1 has only one outcome; saturated cell coefficients may show separation.
+  Note: Q00, wait=2 has only one outcome; saturated cell coefficients may show separation.
+  Note: Q50, wait=1 has only one outcome; saturated cell coefficients may show separation.
+  Note: Q50, wait=2 has only one outcome; saturated cell coefficients may show separation.
+  Note: Q50, wait=3 has only one outcome; saturated cell coefficients may show separation.
+  Note: Q50, wait=4 has only one outcome; saturated cell coefficients may show separation.
+  Method bfgs failed: LinAlgError: Singular matrix
+
+===========================================================================
+Probit regression
+(Std. err. adjusted for clusters in cohort_id)
+===========================================================================
+Log pseudolikelihood = -0.00000
+Pseudo R2            = 1.0000
+
+---------------------------------------------------------------------------
+Variable         Coefficient     Std.Err.          z      P>|z|
+---------------------------------------------------------------------------
+const              22.885362    0.0273180     837.74     0.0000
+wait_time         -15.325192    0.0181312    -845.24     0.0000
+q50                 0.866871    0.0343452      25.24     0.0000
+wait_time_q50      -0.543302    0.0230226     -23.60     0.0000
+---------------------------------------------------------------------------
+
+======================================================================
+HYPOTHESIS TEST: H2 - Secondary (GPT-5.4): wait_time_q50 = 0
+======================================================================
+
+test wait_time_q50 = 0
+
+ ( 1)  [subject_choice]wait_time_q50 = 0
+
+           chi2(  1) =     556.90
+         Prob > chi2 =     0.0000
+
+// Exact p-value:
+   3.978980188535e-123
+
+
+==========================================================================================
+SUMMARY: RESULTS (Q50 vs Q00)
+==========================================================================================
+
+Test                 Dataset      Variable         Coefficient     Std.Err.       Chi2      P-value
+------------------------------------------------------------------------------------------
+H1_Primary           ORIGINAL     w1q50              -1.142051     0.208845      29.90   4.5407e-08
+H2_Secondary         ORIGINAL     wait_time_q50       0.852447     0.099190      73.86   8.3946e-18
+H1_Primary           GPT-5.4       w1q50               0.609909     0.011468    2828.48   0.0000e+00
+H2_Secondary         GPT-5.4       wait_time_q50      -0.543302     0.023023     556.90  3.9790e-123
+------------------------------------------------------------------------------------------
+
+Results saved to: /Users/livia/Desktop/PhD/Projects/CF&CN/GitHub/Debo_Kremer/training_loss_validation/formation_different/F1_N2/baseline/run4/test/navigation_analysis_Q50_vs_Q00.csv

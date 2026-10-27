@@ -1,0 +1,26 @@
+{
+  "human": {
+    "input": "/Users/livia/Desktop/PhD/Projects/CF&CN/Artifact/In_Person_Experiment/Human_Results/wait_time_decomp_main_rounds_results.csv",
+    "sha256": "34beb5b91cb2c2aa25718da587f2f7d0b8e2cb4151f9b34832962ea87366a6f3",
+    "n": 1650,
+    "condition_counts": {
+      "Q50": 850,
+      "Q00": 800
+    },
+    "session_unit": "human experimental session"
+  },
+  "simulation": {
+    "input": "/Users/livia/Desktop/PhD/Projects/CF&CN/Artifact/In_Person_Experiment/LLM_Simulation/results/cfcn/validation/Q50_Q00.csv",
+    "sha256": "c868fc5896fc741bf77ee51a90edc47dbba9ec76e063030cce98b49ac61d423d",
+    "n": 1650,
+    "condition_counts": {
+      "Q50": 850,
+      "Q00": 800
+    },
+    "session_unit": "independent four-consumer group"
+  },
+  "formula": "buy ~ T*(k + rank + d)",
+  "covariance": "Ordinary homoskedastic OLS",
+  "p_values": "Two-sided",
+  "sample_rule": "Uninformed only; human rounds 5\u201329; all independent simulation groups"
+}

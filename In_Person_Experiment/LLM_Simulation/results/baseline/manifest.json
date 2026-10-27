@@ -1,0 +1,30 @@
+{
+  "message_format": "two_user_messages_v1",
+  "formation_id": "F1",
+  "navigation_id": "N1",
+  "mode": "baseline",
+  "model": "gpt5.4",
+  "assistant_model": "gpt4omini",
+  "base_url": "https://api.openai.com/v1",
+  "api_key_set": 1,
+  "seed": 42,
+  "cohorts": {
+    "Q50": 425,
+    "Q00": 200,
+    "Q05": 14
+  },
+  "rounds": 26,
+  "sessions": 2,
+  "prompts": {
+    "formation": "",
+    "navigations": [
+      ""
+    ],
+    "formation_by_condition": {
+      "Q50": "",
+      "Q05": "",
+      "Q00": ""
+    }
+  },
+  "formation_different": true
+}

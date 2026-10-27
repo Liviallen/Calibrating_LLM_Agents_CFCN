@@ -1,0 +1,29 @@
+================================================================================
+KREMER-DEBO ANALYSIS - PROBIT REGRESSION
+Comparing Q05 (5% informed) vs Q00 (0% informed)
+================================================================================
+
+Loading data...
+
+
+********************************************************************************
+** AI Replication: GPT-5.4 (Q05 vs Q00)
+** Method: probit subject_choice vars, vce(cluster cohort_id)
+********************************************************************************
+
+Number of obs    = 2,216
+Number of clusters = 572
+
+Treatment breakdown:
+treatment_name
+Q05    1384
+Q00     832
+Name: count, dtype: int64
+
+// Primary analysis: empty restaurant syndrome (Q05 vs Q00)
+Wait times in data: [1, 2, 3]
+Variables used: ['w2', 'w3', 'w1q05', 'w2q05', 'w3q05']
+  Method bfgs failed: Singular matrix
+  Method lbfgs failed: Singular matrix
+  Method newton failed: Singular matrix
+  Method nm failed: Singular matrix

@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.*
+!.env.example
+# Generated runtime diagnostics, not research outputs.
+**/logs/
+**/progress/
+*.log
+*.lock

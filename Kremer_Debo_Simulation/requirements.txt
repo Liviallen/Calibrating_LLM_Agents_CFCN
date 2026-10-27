@@ -1,0 +1,20 @@
+# Core dependencies for simulation
+langchain-openai>=0.3.0
+langchain-core>=0.3.0
+openai>=1.0.0
+numpy>=1.24.0
+pandas>=2.0.0
+matplotlib>=3.8.0
+
+# Jupyter and notebook support (for running notebooks or converting to scripts)
+jupyter>=1.0.0
+notebook>=7.0.0
+ipykernel>=6.25.0
+nbconvert>=7.0.0
+
+# Weight fitting and hypothesis tests
+scipy>=1.10
+statsmodels>=0.14
+
+# Automatic local API-key configuration
+python-dotenv>=1.0

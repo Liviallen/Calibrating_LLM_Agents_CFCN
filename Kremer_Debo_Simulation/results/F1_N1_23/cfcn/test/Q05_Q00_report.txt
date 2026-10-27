@@ -1,0 +1,224 @@
+================================================================================
+KREMER-DEBO ANALYSIS - PROBIT REGRESSION
+Comparing Q05 (5% informed) vs Q00 (0% informed)
+================================================================================
+
+Loading data...
+
+
+********************************************************************************
+** AI Replication: GPT-5.4 (Q05 vs Q00)
+** Method: probit subject_choice vars, vce(cluster cohort_id)
+********************************************************************************
+
+Number of obs    = 2,216
+Number of clusters = 572
+
+Treatment breakdown:
+treatment_name
+Q05    1384
+Q00     832
+Name: count, dtype: int64
+
+// Primary analysis: empty restaurant syndrome (Q05 vs Q00)
+Wait times in data: [1, 2, 3, 4]
+Variables used: ['w2', 'w3', 'w4', 'w1q05', 'w2q05', 'w3q05', 'w4q05']
+
+===========================================================================
+Probit regression
+(Std. err. adjusted for clusters in cohort_id)
+===========================================================================
+Log pseudolikelihood = -1064.46810
+Pseudo R2            = 0.2752
+
+---------------------------------------------------------------------------
+Variable         Coefficient     Std.Err.          z      P>|z|
+---------------------------------------------------------------------------
+const               1.044409    0.1065252       9.80     0.0000
+w2                 -2.146118    0.1266133     -16.95     0.0000
+w3                 -2.993521    0.3163788      -9.46     0.0000
+w4                 -8.118447    0.1793833     -45.26     0.0000
+w1q05              -0.453251    0.1225666      -3.70     0.0002
+w2q05               0.509011    0.0881665       5.77     0.0000
+w3q05               0.670158    0.3210507       2.09     0.0369
+w4q05              -0.615706    0.1462496      -4.21     0.0000
+---------------------------------------------------------------------------
+
+// Verify purchase probabilities when w=1:
+display normprob(_b[_cons]) // Q00
+   0.85185185
+display normprob(_b[_cons] + _b[w1q05]) // Q05
+   0.72279261
+
+======================================================================
+HYPOTHESIS TEST: H1 - Primary (GPT-5.4): w1q05 = 0 (Q05 vs Q00 at w=1)
+======================================================================
+
+test w1q05 = 0
+
+ ( 1)  [subject_choice]w1q05 = 0
+
+           chi2(  1) =      13.68
+         Prob > chi2 =     0.0002
+
+// Exact p-value:
+   2.173052842334e-04
+
+
+// Secondary analysis: comparing slopes (wait_time effect differs by treatment?)
+
+===========================================================================
+Probit regression
+(Std. err. adjusted for clusters in cohort_id)
+===========================================================================
+Log pseudolikelihood = -1073.89655
+Pseudo R2            = 0.2687
+
+---------------------------------------------------------------------------
+Variable         Coefficient     Std.Err.          z      P>|z|
+---------------------------------------------------------------------------
+const               3.007026    0.2366584      12.71     0.0000
+wait_time          -2.023828    0.1430551     -14.15     0.0000
+q05                -1.446379    0.2596747      -5.57     0.0000
+wait_time_q05       0.992529    0.1561504       6.36     0.0000
+---------------------------------------------------------------------------
+
+======================================================================
+HYPOTHESIS TEST: H2 - Secondary (GPT-5.4): wait_time_q05 = 0 (slope difference)
+======================================================================
+
+test wait_time_q05 = 0
+
+ ( 1)  [subject_choice]wait_time_q05 = 0
+
+           chi2(  1) =      40.40
+         Prob > chi2 =     0.0000
+
+// Exact p-value:
+   2.067546685141e-10
+
+
+********************************************************************************
+** Analysis run on Original dataset
+** Method: xtprobit subject_choice vars, re
+********************************************************************************
+
+Number of obs    = 2,229
+Number of groups = 22
+
+// Primary analysis: empty restaurant syndrome
+Fitting random-effects probit regression...
+
+===========================================================================
+Random-effects probit regression
+===========================================================================
+Log likelihood   = -1164.95845
+sigma_u          = 0.4665419
+rho              = 0.1787536
+
+---------------------------------------------------------------------------
+Variable         Coefficient     Std.Err.          z      P>|z|
+---------------------------------------------------------------------------
+const               1.728150    0.1609306      10.74     0.0000
+w2                 -1.353248    0.1530844      -8.84     0.0000
+w3                 -2.771457    0.1711383     -16.19     0.0000
+w4                 -7.259823   29.6603670      -0.24     0.8066
+w1q05              -0.809959    0.1716313      -4.72     0.0000
+w2q05              -0.410485    0.1273860      -3.22     0.0013
+w3q05               0.046082    0.1711666       0.27     0.7878
+w4q05               3.847304   29.6619570       0.13     0.8968
+---------------------------------------------------------------------------
+
+// Verify purchase probabilities when w=1:
+display normprob(_b[_cons]) // Q00
+   0.95801931
+display normprob(_b[_cons] + _b[w1q05]) // Q05
+   0.82074038
+
+======================================================================
+HYPOTHESIS TEST: H1 - Primary (ORIGINAL): w1q05 = 0
+======================================================================
+
+test w1q05 = 0
+
+ ( 1)  [subject_choice]w1q05 = 0
+
+           chi2(  1) =      22.27
+         Prob > chi2 =     0.0000
+
+// Exact p-value:
+   2.367937329084e-06
+
+
+// Secondary analysis: comparing slopes
+Fitting random-effects probit regression...
+
+===========================================================================
+Random-effects probit regression
+===========================================================================
+Log likelihood   = -1161.86984
+sigma_u          = 0.5029814
+rho              = 0.2019092
+
+---------------------------------------------------------------------------
+Variable         Coefficient     Std.Err.          z      P>|z|
+---------------------------------------------------------------------------
+const               3.188081    0.2017868      15.80     0.0000
+wait_time          -1.404508    0.0826468     -16.99     0.0000
+q05                -1.710535    0.2243383      -7.62     0.0000
+wait_time_q05       0.455619    0.0986535       4.62     0.0000
+---------------------------------------------------------------------------
+
+======================================================================
+HYPOTHESIS TEST: H2 - Secondary (ORIGINAL): wait_time_q05 = 0
+======================================================================
+
+test wait_time_q05 = 0
+
+ ( 1)  [subject_choice]wait_time_q05 = 0
+
+           chi2(  1) =      21.33
+         Prob > chi2 =     0.0000
+
+// Exact p-value:
+   3.867527095119e-06
+
+
+==========================================================================================
+SUMMARY: RESULTS (Q05 vs Q00)
+==========================================================================================
+
+Test                 Dataset      Variable         Coefficient     Std.Err.       Chi2      P-value
+------------------------------------------------------------------------------------------
+H1_Primary           GPT-5.4       w1q05              -0.453251     0.122567      13.68   2.1731e-04
+H2_Secondary         GPT-5.4       wait_time_q05       0.992529     0.156150      40.40   2.0675e-10
+H1_Primary           ORIGINAL     w1q05              -0.809959     0.171631      22.27   2.3679e-06
+H2_Secondary         ORIGINAL     wait_time_q05       0.455619     0.098654      21.33   3.8675e-06
+------------------------------------------------------------------------------------------
+
+==========================================================================================
+INTERPRETATION:
+==========================================================================================
+
+H1 (w1q05): Tests if purchase probability differs between Q05 and Q00 at wait_time=1
+
+  ORIGINAL Data:
+   Result: SIGNIFICANT (p=0.0000)
+   Q05 has lower purchase probability at w=1 compared to Q00
+
+  GPT-5.4 Data:
+   Result: SIGNIFICANT (p=0.0002)
+   Q05 has lower purchase probability at w=1 compared to Q00
+
+H2 (wait_time_q05): Tests if the wait_time slope differs between Q05 and Q00
+
+  ORIGINAL Data:
+   Result: SIGNIFICANT (p=0.0000)
+   Q05 has flatter decline in purchase as wait time increases
+
+  GPT-5.4 Data:
+   Result: SIGNIFICANT (p=0.0000)
+   Q05 has flatter decline in purchase as wait time increases
+==========================================================================================
+
+Results saved to: /Users/livia/Desktop/PhD/Projects/CF&CN/GitHub/Debo_Kremer/training_loss_validation/formation_different/F1_N2_23/cfcn/run4/test/navigation_analysis_Q05_vs_Q00.csv

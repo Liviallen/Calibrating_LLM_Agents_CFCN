@@ -1,0 +1,2 @@
+formation,navigation,mode,model,condition,n_instances,n_candidates,loss_function,total_training_loss,mean_training_loss,training_brier_mean,optimizer_success,optimizer_message
+F1,N2,cfcn,gpt5.4,Q50,875,8,cross_entropy,5448.019065843245,6.226307503820851,0.32556826934341637,False,Desired error not necessarily achieved due to precision loss.

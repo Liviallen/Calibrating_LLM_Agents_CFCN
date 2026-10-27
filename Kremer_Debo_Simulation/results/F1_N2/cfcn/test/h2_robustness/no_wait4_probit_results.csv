@@ -1,0 +1,2 @@
+"comparison","method","estimate","ci_low","ci_high","p_two_sided_centered_bootstrap","bootstrap_success","bootstrap_requested","n","clusters","p_holm"
+"Q50 vs Q00","Mean-bias-reduced probit; stratified cohort bootstrap",2.08077788787022,1.27641323227801,2.83210692207132,5e-04,1999,1999,1702,607,5e-04

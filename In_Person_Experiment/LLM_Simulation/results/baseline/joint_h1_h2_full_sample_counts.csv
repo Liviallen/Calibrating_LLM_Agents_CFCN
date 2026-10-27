@@ -1,0 +1,5 @@
+source,condition,decisions,participants,sessions
+human,Q00,800,32,8
+human,Q50,850,68,17
+simulation,Q00,800,800,200
+simulation,Q50,850,850,425

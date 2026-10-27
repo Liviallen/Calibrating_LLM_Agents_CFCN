@@ -1,0 +1,27 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:         subject_choice   R-squared:                       0.983
+Model:                            OLS   Adj. R-squared:                  0.983
+Method:                 Least Squares   F-statistic:                     3.566
+Date:                Sat, 24 Oct 2026   Prob (F-statistic):             0.0289
+Time:                        18:50:40   Log-Likelihood:                 3184.7
+No. Observations:                2187   AIC:                            -6361.
+Df Residuals:                    2183   BIC:                            -6339.
+Df Model:                           3                                         
+Covariance Type:              cluster                                         
+===============================================================================
+                  coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------
+const           1.0000   9.01e-17   1.11e+16      0.000       1.000       1.000
+wait2          -1.0000   1.31e-16  -7.63e+15      0.000      -1.000      -1.000
+treat          -0.0084      0.005     -1.751      0.080      -0.018       0.001
+interaction     0.0124      0.005      2.394      0.017       0.002       0.023
+==============================================================================
+Omnibus:                     1928.131   Durbin-Watson:                   2.002
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):          8522080.994
+Skew:                           2.617   Prob(JB):                         0.00
+Kurtosis:                     308.767   Cond. No.                         11.2
+==============================================================================
+
+Notes:
+[1] Standard Errors are robust to cluster correlation (CRV1)

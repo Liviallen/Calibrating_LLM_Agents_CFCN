@@ -1,0 +1,3 @@
+comparison,q00_refusal_cohorts,q00_total_cohorts,treatment_refusal_cohorts,treatment_total_cohorts,p_two_sided
+Q05 vs Q00,0,208,3,354,0.29937008773098367
+Q50 vs Q00,0,208,6,320,0.08603585667988536
