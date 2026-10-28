@@ -1,0 +1,39 @@
+{
+  "id": "chatcmpl-EdzZjS30qpDjBSY8zkenH8ASaRPYx",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "{\"navigation_prompts\":[\"Treat delay as a relatively minor cost when evaluating whether to proceed. Do not rely on direct knowledge of underlying quality when making the decision. Do not use observed delay as evidence about what others may have revealed about quality.\",\"Treat delay as a relatively minor cost when evaluating whether to proceed. Do not rely on direct knowledge of underlying quality when making the decision. Use observed delay as evidence about what others may have revealed about quality.\",\"Treat delay as a relatively minor cost when evaluating whether to proceed. Rely on direct knowledge of underlying quality when making the decision. Do not use observed delay as evidence about what others may have revealed about quality.\",\"Treat delay as a relatively minor cost when evaluating whether to proceed. Rely on direct knowledge of underlying quality when making the decision. Use observed delay as evidence about what others may have revealed about quality.\",\"Treat delay as a substantial cost when evaluating whether to proceed. Do not rely on direct knowledge of underlying quality when making the decision. Do not use observed delay as evidence about what others may have revealed about quality.\",\"Treat delay as a substantial cost when evaluating whether to proceed. Do not rely on direct knowledge of underlying quality when making the decision. Use observed delay as evidence about what others may have revealed about quality.\",\"Treat delay as a substantial cost when evaluating whether to proceed. Rely on direct knowledge of underlying quality when making the decision. Do not use observed delay as evidence about what others may have revealed about quality.\",\"Treat delay as a substantial cost when evaluating whether to proceed. Rely on direct knowledge of underlying quality when making the decision. Use observed delay as evidence about what others may have revealed about quality.\"]}",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": [],
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1793200195,
+  "model": "gpt-5.4-2026-03-05",
+  "object": "chat.completion",
+  "service_tier": "default",
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 343,
+    "prompt_tokens": 854,
+    "total_tokens": 1197,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": 0,
+      "audio_tokens": 0,
+      "reasoning_tokens": 0,
+      "rejected_prediction_tokens": 0
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": 0,
+      "cached_tokens": 0
+    }
+  }
+}

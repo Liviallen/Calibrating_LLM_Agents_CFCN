@@ -1,0 +1,54 @@
+- **Manipulated variables and experimentally-varied design elements**
+  - This is the **Q50 treatment**, so the market-level probability that any given subject is informed in a round is **q = 0.50**.
+  - The experiment also varies the **prior probability that product quality is high**; in the design this can be **0.50 or 0.25**. The applicable prior for a given decision is whatever is shown in that subject’s instructions/screen.
+  - Product quality itself varies **by round** and is newly drawn each round as either **high or low**.
+  - Arrival order varies **by round** through random sequencing of the four subjects.
+
+- **Role structure**
+  - In each round there is **one firm** and a **market of 4 subjects** as potential buyers.
+  - Subjects are all in the same buyer role; there is **no separate seller role for participants**.
+  - A subject’s temporary “type” in a round is whether they are **informed or uninformed**; this type can vary from round to round.
+
+- **Information structure**
+  - In Q50, whether a subject is informed is determined **individually each round** by chance; not all subjects in the market have the same information status.
+  - An **informed** subject observes the realized product quality for that round before deciding.
+  - An **uninformed** subject does **not** observe realized quality; they know only the prior probability of high quality and the general environment parameters.
+  - All subjects observe the **current quoted wait time** when they are called to decide.
+  - The wait time is informative because it reflects **how many earlier arrivals decided to buy**, not just production speed.
+  - Subjects know the structural parameters of the environment: market size, prior probability, probability of being informed, high/low product values, and waiting cost.
+  - Subjects do **not** know their **rank in the arrival order** within the round.
+  - Because rank is unknown, a subject cannot infer from a given wait time exactly how many people have already arrived and declined; they only see the delivery delay they would face if they purchase.
+  - Subjects have access to a **history of past rounds** including prior wait time offers, type, decisions, and realized product value.
+
+- **Timing and sequence**
+  - The experiment consists of **26 independent rounds/products**, one after another.
+  - At the start of each round, product quality is drawn.
+  - In each round, the four subjects are assigned a **random arrival sequence**.
+  - Subjects decide **sequentially**, one at a time as they arrive.
+  - When a subject decides, they observe the wait time they would face **if they buy** and their own information status for that round; if informed, they also observe quality.
+  - After all four decisions are made, production/delivery is simulated.
+  - The firm can produce **exactly one unit per week**, so delivery timing depends on how many prior purchases were made.
+  - Purchasers are served **in the order purchases were made**.
+  - A subject who buys at quoted wait time **w** then waits exactly **w** periods/weeks for delivery in that round.
+  - After the round ends, the next round is a **new product** and starts fresh.
+
+- **Matching and memory**
+  - Subjects are placed in fixed cohorts of 4 and remain with the **same cohort across all rounds** (“partner design”).
+  - Even though cohorts stay fixed, each round’s product is treated as **independent** with a new quality draw, new arrival order, and new information-status draws.
+  - Past-round information is visible through the history box, so subjects can remember and review previous outcomes, but those outcomes do **not** mechanically carry over into the next round’s payoffs or queue.
+
+- **Incentives and payoffs**
+  - Each round gives each subject a fresh **$4 budget/endowment**.
+  - If the subject does **not** buy, they simply keep the **$4** for that round.
+  - If the subject **does** buy, round payoff equals **$4 + realized product value − waiting cost**.
+  - Product value is **$0** if quality is low and **$3.50** if quality is high.
+  - Waiting cost is **$1 per week/unit of wait time**.
+  - Thus payoff from buying depends on both realized quality and the quoted wait time at the moment of purchase.
+  - Total compensation is based on **average earnings across the 26 rounds**, so every round matters for final payoff.
+
+- **Randomization and assignment**
+  - At the beginning of each round, product quality is randomly drawn according to the stated prior.
+  - In Q50, each subject’s informed/uninformed status is randomly assigned each round with **50% probability of being informed**.
+  - Arrival order among the four subjects is randomly assigned each round.
+  - The first subject’s arrival is delayed by a random amount of time so that subjects cannot infer whether they are early or late in the sequence from clock timing alone.
+  - Subjects are exposed over rounds to random realizations from the relevant stochastic processes: **consumer type, product value, and arrival order**.

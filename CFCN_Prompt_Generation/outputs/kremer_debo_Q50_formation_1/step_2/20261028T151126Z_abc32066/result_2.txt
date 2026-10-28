@@ -1,0 +1,34 @@
+## 2. Candidate context gaps
+
+### Manipulated variables and experimentally-varied design elements
+- **Product quality varies across rounds and is newly drawn for each new product.**
+- **“Informed” vs. “uninformed” is a round-specific state rather than a permanent subject role.**
+
+### Role structure
+- **All human participants are buyers/consumers; there is no separate participant playing the firm/seller role.**
+
+### Information structure
+- **Whether a subject is informed is determined separately for each subject in each round and revealed privately to that subject.**
+- **The realized product quality is a single common round-level state shared by all four subjects in that round.**
+- **Subjects do not know their exact rank in the arrival sequence when deciding.**
+- **Subjects have access to a history of past rounds, including prior wait times, information status, decisions, and realized product values.**
+
+### Timing and sequence
+- **The experiment consists of 26 rounds, each corresponding to a new product.**
+- **After all four decisions in a round, the round ends and the next round begins with a new independent product and fresh round-specific draws.**
+
+### Matching and memory
+- **Subjects are placed in fixed cohorts of 4 and remain with the same cohort across rounds.**
+- **Despite fixed cohorts, each round is otherwise independent: the new round has a new product, new quality draw, new arrival order, and new information-status realizations.**
+- **Past outcomes do not carry over mechanically into later rounds’ queues or payoffs.**
+- **Past-round information remains visible in a history box.**
+
+### Incentives and payoffs
+- **The $4 endowment is refreshed each round.**
+- **Final payment is based on average earnings across the 26 rounds, so each round contributes to total compensation.**
+
+### Randomization and assignment
+- **Product quality is randomly redrawn each round according to the known prior for that round.**
+- **In Q50, informed/uninformed status is randomly redrawn for each subject each round with 50% probability of being informed.**
+- **A random delay is added before the first arrival so subjects cannot infer rank from timing alone.**
+- **Quality, information status, and arrival order are all redrawn each round.**

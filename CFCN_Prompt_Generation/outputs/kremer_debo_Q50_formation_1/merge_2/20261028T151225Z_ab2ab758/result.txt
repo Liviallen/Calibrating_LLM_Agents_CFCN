@@ -1,0 +1,48 @@
+### Manipulated variables and experimentally-varied design elements
+- **The task is repeated across multiple rounds/products, not a one-shot choice.** In this experiment there are **26 decision rounds**, each involving a new product.
+- **Product value/quality is newly drawn each round** for the current product, rather than fixed across the experiment.
+- **The realized wait-time quote is endogenous within a round**: it reflects how many earlier arrivals in that round chose to order, not a fixed product characteristic.
+- **Information status (“informed” vs. “uninformed”) is a round-specific draw**, not a permanent trait of a participant.
+- **Q50 specifically means the probability of being informed is 50% in a given round for a given subject**, not that exactly half of the four consumers are informed in every round.
+
+### Role structure
+- **All human participants are consumers/buyers only.** There is **no human participant playing the firm/seller**; the firm/production process is part of the computerized environment.
+- **A subject’s only strategic action when called in a round is whether to order or not order.** There are no pricing, production, or communication decisions.
+
+### Information structure
+- **Product quality is a single common round-level state** for the product in that round: if the product is high value or low value, that same realization applies to all four consumers in that round.
+- **Information status is determined separately for each subject in each round and revealed privately to that subject.**
+- **Informed subjects observe the true realized product value before deciding; uninformed subjects do not observe it until after delivery/outcome realization.**
+- **Subjects do not observe their exact arrival rank when deciding.**
+- **Wait time is informative because it reveals the number of prior orders, not the number of prior arrivals.** So a quote of \(X\) weeks implies \(X-1\) earlier orders, but possibly more earlier arrivals who declined to order.
+- **Uninformed subjects know the common prior over product value and the Q50 information environment**, and can use the observed wait time together with that prior to form beliefs.
+- **Subjects have access to past-round history information on the interface** (as described in the design), including prior wait times, consumer type/status, decisions, and realized product values.
+
+### Timing and sequence
+- **Each round starts with a new product and fresh round-specific draws** before any order decisions are made.
+- **Within a round, product quality is drawn before decisions**, and subjects’ information statuses are also determined before decisions.
+- **The four consumers arrive in a random order within the round**, and each decides upon arrival after seeing her quoted wait time and own information.
+- **Production starts only after all four order decisions are collected.**
+- **Delivery then follows in order of purchase arrival**, at a rate of exactly one unit per week.
+- **After the four decisions and the delivery simulation for a round, the round ends and the next independent product round begins.**
+- **The experiment also included training rounds before the payoff-relevant rounds**, which may matter for subject familiarity with the environment.
+
+### Matching and memory
+- **Subjects are placed in fixed cohorts of four and remain with the same cohort across rounds** (partner matching).
+- **Despite fixed cohorts, rounds are otherwise independent in their state variables**: queue/order history, product quality, arrival order, and information realizations reset each round.
+- **Past outcomes do not mechanically carry over into future-round queues or current-round wait times.**
+- **However, subjects may remember or consult visible history from previous rounds**, so repeated-play behavior can be influenced by observed past patterns even though the formal state resets each round.
+
+### Incentives and payoffs
+- **The $4 endowment is received anew each round**, not once for the whole experiment.
+- **Each round payoff depends only on that round’s order decision, realized product value, and quoted wait time.**
+- **Earlier consumers’ order decisions can indirectly affect later consumers’ payoffs** by increasing the later consumers’ quoted wait times.
+- **Final experimental payment is based on average earnings across the 26 payoff-relevant rounds**, so every round contributes to compensation.
+- **Waiting costs and product value are operationalized in money**, with the payoff consequences meant to stand in for utility from product value minus waiting disutility.
+
+### Randomization and assignment
+- **Each round re-randomizes the product’s realized value** according to the known prior for that condition.
+- **In Q50, each subject’s informed/uninformed status is re-randomized independently each round with 50% probability of being informed.**
+- **Arrival order is randomly redrawn each round.**
+- **A random delay before the first arrival is used so subjects cannot infer their arrival rank from clock timing alone.**
+- **Thus, the key stochastic elements that reset each round are product value, each subject’s information status, and arrival order.**

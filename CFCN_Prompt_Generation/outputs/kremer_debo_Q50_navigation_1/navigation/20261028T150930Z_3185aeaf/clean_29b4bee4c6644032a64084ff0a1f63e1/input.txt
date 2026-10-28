@@ -1,0 +1,68 @@
+Below are **all combinations** for the **3 mechanisms** with levels:
+- **Mechanism 1: Baseline wait-cost sensitivity** = {Low, High}
+- **Mechanism 2: Direct quality-contingent responding** = {Off, On}
+- **Mechanism 3: Social inference from wait time** = {Off, On}
+
+Total combinations = **2 × 2 × 2 = 8**, so I include all 8.
+
+To satisfy your consistency requirement, each mechanism-level uses the **exact same sentence** wherever it appears.
+
+---
+
+## Sentence library by mechanism and level
+
+**Mechanism 1: Baseline wait-cost sensitivity**
+- **Low:** "Treat delay as a relatively minor cost when evaluating whether to proceed."
+- **High:** "Treat delay as a substantial cost when evaluating whether to proceed."
+
+**Mechanism 2: Direct quality-contingent responding**
+- **Off:** "Do not rely on direct knowledge of underlying quality when making the decision."
+- **On:** "Rely on direct knowledge of underlying quality when making the decision."
+
+**Mechanism 3: Social inference from wait time**
+- **Off:** "Do not use observed delay as evidence about what others may have revealed about quality."
+- **On:** "Use observed delay as evidence about what others may have revealed about quality."
+
+---
+
+## Context navigation prompts
+
+### Prompt 1
+Treat delay as a relatively minor cost when evaluating whether to proceed.  
+Do not rely on direct knowledge of underlying quality when making the decision.  
+Do not use observed delay as evidence about what others may have revealed about quality.
+
+### Prompt 2
+Treat delay as a relatively minor cost when evaluating whether to proceed.  
+Do not rely on direct knowledge of underlying quality when making the decision.  
+Use observed delay as evidence about what others may have revealed about quality.
+
+### Prompt 3
+Treat delay as a relatively minor cost when evaluating whether to proceed.  
+Rely on direct knowledge of underlying quality when making the decision.  
+Do not use observed delay as evidence about what others may have revealed about quality.
+
+### Prompt 4
+Treat delay as a relatively minor cost when evaluating whether to proceed.  
+Rely on direct knowledge of underlying quality when making the decision.  
+Use observed delay as evidence about what others may have revealed about quality.
+
+### Prompt 5
+Treat delay as a substantial cost when evaluating whether to proceed.  
+Do not rely on direct knowledge of underlying quality when making the decision.  
+Do not use observed delay as evidence about what others may have revealed about quality.
+
+### Prompt 6
+Treat delay as a substantial cost when evaluating whether to proceed.  
+Do not rely on direct knowledge of underlying quality when making the decision.  
+Use observed delay as evidence about what others may have revealed about quality.
+
+### Prompt 7
+Treat delay as a substantial cost when evaluating whether to proceed.  
+Rely on direct knowledge of underlying quality when making the decision.  
+Do not use observed delay as evidence about what others may have revealed about quality.
+
+### Prompt 8
+Treat delay as a substantial cost when evaluating whether to proceed.  
+Rely on direct knowledge of underlying quality when making the decision.  
+Use observed delay as evidence about what others may have revealed about quality.

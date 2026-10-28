@@ -1,0 +1,75 @@
+For **Kremer and Debo’s Q50 condition** only, a **minimal and sufficient representation** of the decision process is:
+
+## Core decision-making structure in Q50
+Consumers decide **whether to purchase or not** after observing:
+- the **wait time** \(w\),
+- their **information status** (in Q50, each consumer is informed with probability 0.5),
+- and, if informed, the realized **product quality** (high or low).
+
+The key logic from the theory and experiment is:
+1. **Waiting is costly**.
+2. **Informed consumers** can condition directly on true quality.
+3. **Uninformed consumers** use **wait time as a signal** of likely quality, because in Q50 many earlier consumers may have been informed, so cumulative purchases embedded in wait time reveal information.
+
+This is stated in the theory section on **pages 1–2**, where uninformed consumers infer quality from wait time because sales depend on quality through informed consumers, and in the experiment description on **pages 3–4**, where the Q50 treatment sets the informed-consumer probability to 50%.
+
+---
+
+# Number of mechanisms
+**m = 3**
+
+## Mechanism 1: Baseline wait-cost sensitivity
+A consumer trades off product value against the disutility of waiting. This mechanism is always present in Q50 for all consumers.
+
+**Levels of engagement**
+- **Low**: weak sensitivity to additional wait time
+- **High**: strong sensitivity to additional wait time
+
+---
+
+## Mechanism 2: Direct quality-contingent responding
+This captures whether the consumer can respond directly to realized quality rather than relying only on prior beliefs or queue-based inference. In Q50, this varies by whether the consumer is informed.
+
+**Levels of engagement**
+- **Off**: consumer is uninformed and cannot observe realized quality directly
+- **On**: consumer is informed and conditions choice on realized quality
+
+---
+
+## Mechanism 3: Social inference from wait time
+This captures the distinct inferential use of wait time as information about quality. In Q50 this is central for uninformed consumers, because with 50% informed consumers, wait time is informative about earlier quality-based purchases.
+
+**Levels of engagement**
+- **Off**: little or no use of wait time as a signal of quality
+- **On**: uses wait time to infer likely product quality from prior demand
+
+---
+
+# Why this is the minimal sufficient set
+These three mechanisms are conceptually distinct and align with the paper’s Q50 logic:
+
+- **Wait-cost sensitivity** is the basic economic tradeoff and is always present.
+- **Direct quality observation** is a separate driver: informed consumers know quality and do not need to infer it.
+- **Social inference from wait time** is the key observational-learning mechanism for uninformed consumers in Q50.
+
+Variation is therefore **not just one continuum**. It combines:
+- a common valuation-vs-wait tradeoff,
+- a difference in information access,
+- and a distinct inferential response to queue length / wait time.
+
+So the final concise coding is:
+
+## Final answer
+**m = 3 mechanisms**
+
+1. **Baseline wait-cost sensitivity**  
+   - Low  
+   - High  
+
+2. **Direct quality-contingent responding**  
+   - Off  
+   - On  
+
+3. **Social inference from wait time**  
+   - Off  
+   - On

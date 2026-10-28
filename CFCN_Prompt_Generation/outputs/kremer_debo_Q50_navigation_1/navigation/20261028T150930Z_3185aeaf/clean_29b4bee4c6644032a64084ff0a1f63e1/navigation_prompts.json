@@ -1,0 +1,10 @@
+[
+  "Treat delay as a relatively minor cost when evaluating whether to proceed. Do not rely on direct knowledge of underlying quality when making the decision. Do not use observed delay as evidence about what others may have revealed about quality.",
+  "Treat delay as a relatively minor cost when evaluating whether to proceed. Do not rely on direct knowledge of underlying quality when making the decision. Use observed delay as evidence about what others may have revealed about quality.",
+  "Treat delay as a relatively minor cost when evaluating whether to proceed. Rely on direct knowledge of underlying quality when making the decision. Do not use observed delay as evidence about what others may have revealed about quality.",
+  "Treat delay as a relatively minor cost when evaluating whether to proceed. Rely on direct knowledge of underlying quality when making the decision. Use observed delay as evidence about what others may have revealed about quality.",
+  "Treat delay as a substantial cost when evaluating whether to proceed. Do not rely on direct knowledge of underlying quality when making the decision. Do not use observed delay as evidence about what others may have revealed about quality.",
+  "Treat delay as a substantial cost when evaluating whether to proceed. Do not rely on direct knowledge of underlying quality when making the decision. Use observed delay as evidence about what others may have revealed about quality.",
+  "Treat delay as a substantial cost when evaluating whether to proceed. Rely on direct knowledge of underlying quality when making the decision. Do not use observed delay as evidence about what others may have revealed about quality.",
+  "Treat delay as a substantial cost when evaluating whether to proceed. Rely on direct knowledge of underlying quality when making the decision. Use observed delay as evidence about what others may have revealed about quality."
+]

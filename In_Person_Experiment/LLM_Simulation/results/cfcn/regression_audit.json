@@ -10,12 +10,12 @@
     "session_unit": "human experimental session"
   },
   "simulation": {
-    "input": "/Users/livia/Desktop/PhD/Projects/CF&CN/Artifact/In_Person_Experiment/LLM_Simulation/results/cfcn/validation/Q50_Q00.csv",
-    "sha256": "c868fc5896fc741bf77ee51a90edc47dbba9ec76e063030cce98b49ac61d423d",
-    "n": 1650,
+    "input": "/Users/livia/Desktop/PhD/Projects/CF&CN/Artifact/In_Person_Experiment/LLM_Simulation/results/cfcn/run4/validation/Q50_Q00.csv",
+    "sha256": "1dc569a22e19a6c4ddb197d1aba3b3b9d15a94abf30eed1cc9edac0bc8eef46e",
+    "n": 2550,
     "condition_counts": {
-      "Q50": 850,
-      "Q00": 800
+      "Q00": 1700,
+      "Q50": 850
     },
     "session_unit": "independent four-consumer group"
   },

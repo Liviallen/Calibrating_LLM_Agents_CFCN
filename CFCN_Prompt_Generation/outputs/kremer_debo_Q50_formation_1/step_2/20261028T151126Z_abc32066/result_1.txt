@@ -1,0 +1,42 @@
+## 2. Candidate context gaps
+
+### Manipulated variables and experimentally-varied design elements
+- **Product quality is newly drawn for each new product/round** as either high or low.
+- **Quoted wait time is endogenous within the round**: it depends on how many earlier arrivals chose to purchase, not on a fixed product attribute.
+- **“Informed” vs. “uninformed” is a round-specific state**, not a permanent subject type.
+
+### Role structure
+- **All human participants are buyers/consumers only**; there is no human seller role making strategic decisions.
+- **The only active decision for a subject when called is whether to purchase or not purchase.**  
+  - This is mostly stated already, so likely low priority unless included for completeness.
+
+### Information structure
+- **Information status is privately determined separately for each subject for each round.**
+- **Product quality is a single common round-level state** shared by all four subjects; informed subjects who are informed about quality observe that same realized state.
+- **Wait time is informative because it reflects cumulative prior purchases** by earlier arrivals.
+- **Subjects have access to a history of past rounds**, including prior wait times, own/others’ type information as displayed, decisions, and realized product values.  
+  - Keep only if the context prompt is meant to cover repeated-round memory/interface.
+
+### Timing and sequence
+- **The task consists of 26 rounds/products.**
+- **Each round begins with a new product and a fresh draw of round-specific variables.**
+- **Within a round, product quality is drawn before any purchase decisions are made.**
+- **After all four decisions are made, production/delivery is carried out/simulated; this does not involve further decisions.**
+- **After a round ends, the next round starts with a new independent product.**
+
+### Matching and memory
+- **Subjects remain in fixed cohorts of four across rounds (partner matching).**
+- **Despite fixed cohorts, rounds are independent in the sense that queue, quality, arrival order, and information draws reset each round.**
+- **Past outcomes do not carry over mechanically into later-round queues or payoffs.**
+- **Visible history from past rounds may be available to subjects.**
+
+### Incentives and payoffs
+- **The $4 endowment is refreshed each round**, not just once for the whole experiment.
+- **Final payment is based on average earnings across all 26 rounds**, so each round contributes to final compensation.
+- **Earlier subjects’ purchase decisions can indirectly affect one’s payoff** by changing the wait time one faces.
+
+### Randomization and assignment
+- **Product quality is redrawn each round according to the publicly known prior shown for that round.**
+- **In Q50, informed/uninformed status is redrawn for each subject each round with 50% probability of being informed.**
+- **A random delay before the first arrival prevents subjects from inferring their arrival rank from clock timing alone.**
+- **Quality, information status, and arrival order are all re-randomized each round.**
