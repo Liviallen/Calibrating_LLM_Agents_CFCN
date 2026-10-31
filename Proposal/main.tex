@@ -388,11 +388,9 @@ Successful replication therefore cannot be established.
 \subsection{In-Person Experimental Design}
 \label{app:decomposition-design}
 
-We conducted an in-person experiment at The Chinese University
-of Hong Kong (CUHK) with 100 participants, organized into groups
-of four, each completing 25 rounds of decisions. We refer to this
-design as the \textit{wait-time decomposition variant} of
-Kremer and Debo's (2016) original experiment.
+We designed the \textit{wait-time decomposition variant} of
+Kremer and Debo's (2016) original experiment to evaluate
+predictions in a novel setting before collecting human data.
 
 Unlike the original design, this variant decomposes total
 waiting time into queuing time and shipping time. Shipping time
@@ -404,10 +402,13 @@ are informed, allows us to examine responses to the informational
 content of waiting beyond its total cost.
 
 % ==================== C.2 ====================
-\subsection{Regression Specification and Hypotheses}
+\subsection{Hypotheses and Regression Specification}
 \label{app:decomposition-specification}
 
-We estimate a pooled linear probability model by ordinary least
+Before conducting simulations or collecting human data, we
+derived two hypotheses from the experimental design. To evaluate
+these hypotheses in both simulated and human data, we use a
+pooled linear probability model estimated by ordinary least
 squares (OLS), allowing the slopes of queuing time, rank, and
 total waiting time to differ between Q00 and Q50:
 \begin{equation}
@@ -466,14 +467,21 @@ a higher rank at fixed queuing time corresponds to more earlier
 nonpurchases.
 
 % ==================== C.3 ====================
-\subsection{Comparison of Human and Simulation Results}
+\subsection{Simulation Predictions and Subsequent Human Validation}
 \label{app:decomposition-results}
 
-Tables~\ref{tab:decomposition-h1}
-and~\ref{tab:decomposition-h2} compare the human results with
-the baseline simulation and context formation and context
-navigation simulation run~4. Coefficients are expressed in
-percentage points.
+We first evaluated these hypotheses using baseline simulations
+and simulations with Context Formation and Context Navigation.
+For the latter, we adapted the task representation while retaining
+the previously calibrated distribution over problem-solving
+strategies. We subsequently conducted an in-person experiment at
+The Chinese University of Hong Kong (CUHK) with 100 participants,
+organized into groups of four, each completing 25 rounds of
+decisions. Tables~\ref{tab:decomposition-h1}
+and~\ref{tab:decomposition-h2} compare the simulation predictions
+with the
+subsequently collected human results. Coefficients are expressed
+in percentage points.
 
 % -------------------- H1 table --------------------
 \begin{table}[htbp]
@@ -583,15 +591,19 @@ and shipping time fixed.
 \endgroup
 \end{table}
 
-The baseline does not successfully replicate the full pattern
-predicted by H1 and H2. Although it reproduces the predicted signs
-and statistical significance of the Q50 slopes and the
-Q50-minus-Q00 slope differences, it produces significantly
-nonzero Q00 coefficients, contrary to the hypothesized negligible
-effects. In contrast, context formation and context navigation
-reproduces the human pattern across both hypotheses, including
-Q00 coefficients that are not statistically distinguishable from
-zero at the 5\% level. 
+The simulations with Context Formation and Context Navigation
+produce the predicted signs and statistical significance for
+the Q50 slopes and Q50-minus-Q00 slope differences, alongside
+Q00 coefficients that are not statistically distinguishable
+from zero. The baseline recovers the Q50 slopes and
+between-condition differences but produces significantly
+nonzero Q00 coefficients, failing to recover the full
+hypothesized pattern. The subsequent human experiment supports
+the predicted Q50 effects and between-condition differences,
+with Q00 coefficients also not statistically distinguishable
+from zero at the 5\% level. Because the simulation predictions
+preceded human data collection, they could not have been
+tailored to or memorized these experimental outcomes. 
 
 % ==================== Appendix D ====================
 \clearpage
