@@ -8,6 +8,8 @@ import re
 import subprocess
 import sys
 
+from file_utils import atomic_write, protect_stage
+
 ROOT = Path(__file__).resolve().parent
 
 
@@ -16,6 +18,9 @@ def resolve_run(args):
     for value in (args.formation, args.navigation):
         if not re.fullmatch(r'[A-Za-z0-9_-]+', value):
             raise ValueError('IDs may contain only letters, numbers, underscores and hyphens.')
+    run_id = getattr(args, 'run_id', None)
+    if run_id is not None and not re.fullmatch(r'[A-Za-z0-9_-]+', run_id):
+        raise ValueError('--run-id may contain only letters, numbers, underscores and hyphens.')
     weights_source = getattr(args, 'weights_csv', None)
     if getattr(args, 'training_test', False) or getattr(args, 'training_q50_q00', False):
         raise ValueError('Only full Q50 training with condition-specific formation is supported.')
@@ -45,6 +50,8 @@ def resolve_run(args):
     m['prompts']['formation_by_condition'] = by_condition
     folder = 'results'
     run = ROOT / folder / f'{args.formation}_{args.navigation}' / args.mode
+    if run_id is not None:
+        run = run / 'runs' / run_id
     path = run / 'manifest.json'
     if path.exists():
         if json.loads(path.read_text()) != m:
@@ -58,10 +65,11 @@ def resolve_run(args):
         from formation_different import prepare_reused_weights
         if not prepare_reused_weights(run, m, weights_source):
             raise ValueError('Supply a full-Q50 weights CSV before starting validation.')
-        path.write_text(json.dumps(m, indent=2) + '\n')
+        atomic_write(path, (json.dumps(m, indent=2) + '\n').encode())
     else:
         run.mkdir(parents=True, exist_ok=True)
-        path.write_text(json.dumps(m, indent=2) + '\n')
+        atomic_write(path, (json.dumps(m, indent=2) + '\n').encode())
+    protect_stage(run, args.stage)
     from formation_different import prepare_reused_weights
     available = prepare_reused_weights(run, m, weights_source)
     if args.stage == 'validate' and args.mode in ('cn', 'cfcn') and not available:
@@ -74,6 +82,7 @@ def main():
     load_environment()
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('stage', choices=['preview', 'train', 'fit', 'validate', 'aggregate', 'test'])
+    p.add_argument('--run-id', help='Separate directory for new work; existing result directories are preserved.')
     p.add_argument('--formation', default='F1')
     p.add_argument('--navigation', default='N1')
     p.add_argument('--mode', choices=['baseline', 'cf', 'cn', 'cfcn'], default='cfcn')

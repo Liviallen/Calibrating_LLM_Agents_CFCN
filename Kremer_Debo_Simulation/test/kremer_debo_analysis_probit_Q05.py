@@ -6,7 +6,10 @@ This script analyzes the empty restaurant syndrome using:
 - For ORIGINAL data: Random Effects Probit (xtprobit...re equivalent)
 - For GPT-5.4 data: Probit with cluster-robust standard errors
 """
-
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from file_utils import atomic_to_csv, atomic_write
 import pandas as pd
 import numpy as np
 from scipy import stats
@@ -559,7 +562,7 @@ def main(gpt4o_path=None, output_dir=None):
     ])
     
     output_path = os.path.join(output_dir or script_dir, 'navigation_analysis_Q05_vs_Q00.csv')
-    results_df.to_csv(output_path, index=False)
+    atomic_to_csv(results_df, output_path, index=False)
     print(f"\nResults saved to: {output_path}")
     
     return results_df

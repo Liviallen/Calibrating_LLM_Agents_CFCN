@@ -1,10 +1,11 @@
+from file_utils import atomic_output
 """Helpers used by the Q50 training runner."""
 import pickle
 from shared_prompts import get_period_prompt
 
 def save_record(data, file_path):
 
-    with open(file_path, 'wb') as f:
+    with atomic_output(file_path, 'wb') as f:
         pickle.dump(data, f)
 
 def load_record(file_path):

@@ -1,3 +1,4 @@
+from file_utils import atomic_output
 import random
 import pickle
 import numpy as np
@@ -211,7 +212,7 @@ def add_navigation_prompt_record(record_sheet, weights_csv_path=None):
 
 def save_record(data, file_path):
 
-    with open(file_path, 'wb') as f:
+    with atomic_output(file_path, 'wb') as f:
         pickle.dump(data, f)
 
 def load_record(file_path):

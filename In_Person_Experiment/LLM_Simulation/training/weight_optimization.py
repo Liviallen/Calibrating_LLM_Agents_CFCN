@@ -1,4 +1,5 @@
 """Navigation-mixture fitting used by pipeline.py; original numerical routines."""
+from file_utils import atomic_to_csv
 import os
 
 import numpy as np
@@ -369,6 +370,6 @@ def save_weights_to_csv(results, output_path, prompt_names=None, navigation_prom
     weights_df = weights_df.sort_values('optimal_weight', ascending=False)
     
     # Save to CSV
-    weights_df.to_csv(output_path, index=False)
+    atomic_to_csv(weights_df, output_path, index=False)
     
     return output_path

@@ -2,6 +2,10 @@
 
 The reference script is preserved verbatim in human_regression_reference.py.
 """
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from file_utils import atomic_to_csv, atomic_write
 from pathlib import Path
 import hashlib
 import json
@@ -120,17 +124,17 @@ def run_comparison(simulation_csv, output_dir):
     results = pd.concat(all_results, ignore_index=True)
     coefficients = pd.concat(all_coefficients, ignore_index=True)
     counts = pd.concat(all_counts, ignore_index=True)
-    results.to_csv(output / 'joint_h1_h2_full_sample_results.csv', index=False)
-    coefficients.to_csv(output / 'joint_h1_h2_full_sample_coefficients.csv', index=False)
-    counts.to_csv(output / 'joint_h1_h2_full_sample_counts.csv', index=False)
+    atomic_to_csv(results, output / 'joint_h1_h2_full_sample_results.csv', index=False)
+    atomic_to_csv(coefficients, output / 'joint_h1_h2_full_sample_coefficients.csv', index=False)
+    atomic_to_csv(counts, output / 'joint_h1_h2_full_sample_counts.csv', index=False)
     # Wide tables place human and simulation estimates and two-sided p-values side by side.
     for name, tables, keys in [('regression_comparison.csv', all_coefficients, ['se_method', 'term']),
                                ('hypothesis_comparison.csv', all_results, ['se_method', 'model', 'hypothesis', 'target'])]:
         columns = ['estimate', 'se', 'ci_low', 'ci_high', 'p_two', 'df', 'n', 'status']
         left, right = [table[keys + columns] for table in tables]
-        left.merge(right, on=keys, suffixes=('_human', '_simulation'), validate='one_to_one').to_csv(output / name, index=False)
+        atomic_to_csv(left.merge(right, on=keys, suffixes=('_human', '_simulation'), validate='one_to_one'), output / name, index=False)
     audit.update(formula=FORMULA, covariance='Ordinary homoskedastic OLS', p_values='Two-sided',
                  sample_rule='Uninformed only; human rounds 5–29; all independent simulation groups')
-    (output / 'regression_audit.json').write_text(json.dumps(audit, indent=2) + '\n')
+    atomic_write(output / 'regression_audit.json', (json.dumps(audit, indent=2) + '\n').encode())
     print(results[['source', 'hypothesis', 'target', 'estimate', 'p_two']].to_string(index=False))
     return results, coefficients

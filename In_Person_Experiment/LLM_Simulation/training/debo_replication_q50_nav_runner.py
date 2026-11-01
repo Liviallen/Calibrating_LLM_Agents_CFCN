@@ -10,6 +10,7 @@ Output layout (compatible with weight_optimization.py):
 
 from __future__ import annotations
 
+from file_utils import atomic_to_csv
 import os
 import random
 
@@ -91,7 +92,7 @@ def _save_results(
     pkl_filename = f"{model_name}_nav{nav_idx}_{condition}_results.pkl"
 
     csv_path = os.path.join(subfolder_path, csv_filename)
-    df_results.to_csv(csv_path, index=False)
+    atomic_to_csv(df_results, csv_path, index=False)
     setup.save_record(results_list, os.path.join(subfolder_path, pkl_filename))
     print(f"Results saved to {csv_path}")
     return df_results

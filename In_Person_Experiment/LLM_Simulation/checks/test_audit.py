@@ -64,7 +64,7 @@ class AuditTests(unittest.TestCase):
                     product_value=3.5, shipping_time=0, queuing_time=0, wait_time=0)}
                 nav = prompt_inputs.NAVIGATIONS['N1'][0] if mode == 'cfcn' else None
                 text = prompts.get_instruction_prompt(condition) + prompts.get_period_prompt((1, 1), record, nav)
-                formation = prompt_inputs.F1_Q00 if condition == 'Q00' else prompt_inputs.F1_Q50
+                formation = prompt_inputs.FORMATION_GROUPS['F1']['Q00' if condition == 'Q00' else 'Q50_Q05']
                 self.assertEqual(formation.strip() in text, mode == 'cfcn')
                 for navigation in prompt_inputs.NAVIGATIONS['N1']:
                     self.assertEqual(navigation in text, mode == 'cfcn' and navigation == nav)

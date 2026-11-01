@@ -1,3 +1,4 @@
+from file_utils import atomic_to_csv
 import os
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.chat_history import InMemoryChatMessageHistory
@@ -246,4 +247,4 @@ subject_positions = setup.get_all_positions(position_record, n_cohort=n_cohort)
 
 df_record = pd.DataFrame(record).T
 df_record = df_record.reset_index(drop=True)
-df_record.to_csv(os.path.join(subfolder_path, "{}.csv".format(file_name)), index=False)
+atomic_to_csv(df_record, os.path.join(subfolder_path, "{}.csv".format(file_name)), index=False)

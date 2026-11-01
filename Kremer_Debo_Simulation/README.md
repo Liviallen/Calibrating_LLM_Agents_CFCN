@@ -67,22 +67,22 @@ From this directory, install dependencies and put your key in `.env` (see
 python -m pip install -r requirements.txt
 
 # Inspect both formation branches without calling an API.
-python pipeline.py preview --formation F1 --navigation N1
+python pipeline.py preview --formation F1 --navigation N1 --run-id new-experiment
 
 # Train all candidates and fit their weights.
-python pipeline.py train --formation F1 --navigation N1
+python pipeline.py train --formation F1 --navigation N1 --run-id new-experiment
 
 # Simulate all three conditions, then aggregate both comparisons.
-python pipeline.py validate --formation F1 --navigation N1
+python pipeline.py validate --formation F1 --navigation N1 --run-id new-experiment
 
 # Save probit analyses and text reports.
-python pipeline.py test --formation F1 --navigation N1
+python pipeline.py test --formation F1 --navigation N1 --run-id new-experiment
 ```
 
 Outputs go to `results/F1_N1/cfcn/`. Use N2 for the second set.
 The old `--formation-different` flag is no longer needed or accepted.
 The pipeline reads and writes directly under each combination/mode folder.
-There is no `--run-id` option. The older `results/F1_N1/cfcn/run1/` is retained
+Use `--run-id NAME` for a separate new run beneath the selected mode directory. The older `results/F1_N1/cfcn/run1/` is retained
 for reference and is not selected by the pipeline.
 Every stage must use the same settings. A manifest prevents mixing different
 prompts or settings in an existing result directory. Archive that directory before starting a new
@@ -106,7 +106,7 @@ Other settings are listed by `python pipeline.py --help`.
 To start validation with compatible full-Q50 weights, supply `--weights-csv`:
 
 ```bash
-python pipeline.py validate --formation F1 --navigation N1 \
+python pipeline.py validate --formation F1 --navigation N1 --run-id new-experiment \
   --weights-csv /path/to/compatible/weights.csv
 ```
 
@@ -146,8 +146,7 @@ recompute the results. Its existing PNG/PDF exports are preserved unchanged.
 Supplementary human datasets were moved to `data/reference/` rather than deleted.
 The active training and comparison CSVs remain beside their respective code.
 
-Training resumes from checkpoints. Validation skips completed session CSVs and
-restarts incomplete sessions. Runtime progress may generate new `progress/` files;
+Training resumes from checkpoints. Validation checks completed session CSVs before skipping them. Incomplete session artifacts are preserved and require a new run ID; they are not automatically restarted. Runtime progress may generate new `progress/` files;
 historical logs and progress snapshots have been removed from the artifact.
 
 ## Offline verification
@@ -156,6 +155,43 @@ historical logs and progress snapshots have been removed from the artifact.
 PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s checks -v
 ```
 
-Checks exercise condition-specific prompts, weight import/fitting, mocked training
-and validation, aggregation, and analysis entry points without API calls.
-See `docs/REORGANIZATION.md` for the preservation audit and cleanup details.
+The included safeguard checks exercise atomic output, session integrity, output
+protection, run IDs, and generation failure handling without API calls.
+
+
+## Output safeguards
+
+Existing scientific outputs are preserved. Training/fitting refuses to replace
+fitted weights or run after validation results exist. Preview, aggregation, and
+analysis refuse to replace their existing outputs. Completed validation CSVs are
+checked for the expected row count, binary choices, and four unique ranks per
+market before reuse. A malformed CSV or an incomplete session directory causes
+an explicit error; it is not automatically regenerated. These checks do not
+reinterpret model responses or change decisions, fitting, or statistical methods.
+
+For new work, keep the archived results and select a separate run:
+
+```bash
+python pipeline.py preview --mode cfcn --run-id new-experiment
+```
+
+Use the same `--run-id` and settings for subsequent stages. Named runs live under
+`results/.../{mode}/runs/{run-id}/` (the existing mode path stays unchanged).
+The ID is a directory selector, not a random seed. Original-study CFCN runs still
+require training or an explicit compatible weights import; in-person N1 retains
+its existing default imported weights. A new run does not copy old simulation
+outputs. There is deliberately no force-overwrite option. A full validation call
+preserves already existing aggregate outputs instead of recomputing them.
+
+CSV outputs and pickle checkpoints are written to a temporary file in the same
+directory and atomically replaced only after a successful write. A write failure
+leaves the preceding file intact. This is per-file protection, not a transaction
+across an entire multi-file stage or support for concurrent writers to one run.
+Use distinct run IDs for concurrent experiments. An interrupted multi-file stage
+may leave some completed files; preserve them and use a new run for a clean restart.
+
+Run the offline safeguards with:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s checks -v
+```

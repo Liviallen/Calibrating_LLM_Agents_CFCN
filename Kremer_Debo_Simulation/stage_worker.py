@@ -1,4 +1,5 @@
 """Adapters around local copies only; no imports from the original source folders."""
+from file_utils import atomic_to_csv, atomic_write, atomic_output, validate_session_csv, protect_stage
 import argparse
 import importlib
 import os
@@ -20,6 +21,7 @@ def run_dir():
 
 
 def fit():
+    protect_stage(run_dir(), 'fit')
     import numpy as np
     import pandas as pd
     stage_path('training')
@@ -50,18 +52,19 @@ def fit():
         message = str(result['optimization_result'].message)
     wo.save_weights_to_csv(result, str(root / 'weights.csv'), navigation_prompts=prompts)
     p = np.clip(X @ (result['weights'] / (result['weights'].sum() + 1e-10)), 1e-10, 1 - 1e-10)
-    pd.DataFrame([dict(formation=m['formation_id'], navigation=m['navigation_id'], mode=m['mode'],
+    atomic_to_csv(pd.DataFrame([dict(formation=m['formation_id'], navigation=m['navigation_id'], mode=m['mode'],
                       model=m['model'], condition=scope, n_instances=len(Y), n_candidates=len(prompts),
                       loss_function='cross_entropy', total_training_loss=result['loss'],
                       mean_training_loss=result['loss'] / len(Y),
                       training_brier_mean=float(np.mean((p - Y)**2)),
-                      optimizer_success=success, optimizer_message=message)]).to_csv(root / 'training_loss.csv', index=False)
+                      optimizer_success=success, optimizer_message=message)]), root / 'training_loss.csv', index=False)
     print(pd.read_csv(root / 'training_loss.csv').to_string(index=False))
     if not success:
         print('WARNING: optimizer did not report convergence; inspect training_loss.csv before interpreting results.')
 
 
 def train(nav_idx):
+    protect_stage(run_dir(), 'train')
     stage_path('training')
     from debo_replication_q50_nav_runner import run_nav_variant
     count = len(manifest()['prompts']['navigations'])
@@ -87,18 +90,27 @@ def validate(condition, session):
         for sess in sessions:
             output = run_dir() / 'validation/weights' / f'weights_{cond}_sim{sess}' / f'weights_{cond}_sim{sess}.csv'
             if output.exists():
+                validate_session_csv(output, round(m['cohorts'][cond] * m['rounds'] / m['sessions']) * 4)
                 print(f'Already complete: {output}')
                 continue
+            if output.parent.exists() and any(output.parent.iterdir()):
+                raise ValueError(f'Incomplete session artifacts at {output.parent}; preserve them and use a new --run-id.')
             env = os.environ.copy()
             env.update(TLV_CONDITION=cond, TLV_SESSION=str(sess))
             subprocess.run([sys.executable, str(ROOT / 'stage_worker.py'), '_simulate'], env=env, check=True)
     if condition is None and session is None:
+        if any((run_dir() / 'validation').glob('*_Q00.csv')):
+            print('Existing aggregate outputs preserved; use a new --run-id for new work.')
+            return
         aggregate()
 
 
 def simulate():
     import numpy as np
     m = manifest()
+    session_dir = run_dir() / 'validation/weights' / f"weights_{os.environ['TLV_CONDITION']}_sim{os.environ['TLV_SESSION']}"
+    if session_dir.exists() and any(session_dir.iterdir()):
+        raise ValueError('Session outputs already exist; use a new --run-id.')
     seed = m['seed'] + int(os.environ['TLV_SESSION']) + 100 * ['Q00', 'Q05', 'Q50'].index(os.environ['TLV_CONDITION'])
     random.seed(seed)
     np.random.seed(seed)
@@ -113,6 +125,7 @@ def simulate():
 
 
 def aggregate():
+    protect_stage(run_dir(), 'aggregate')
     import pandas as pd
     stage_path('validation')
     from aggregate_data import make_clean_df
@@ -146,12 +159,13 @@ def aggregate():
             str((int(cohort), int(rank)))
             for cohort, rank in zip(combined['cohort_id'], combined['subject_rank'])
         ]
-        combined.to_csv(run_dir() / f'validation/{cond}_Q00.csv', index=False)
-        make_clean_df(combined).to_csv(run_dir() / f'validation/{cond}_Q00_clean.csv', index=False)
+        atomic_to_csv(combined, run_dir() / f'validation/{cond}_Q00.csv', index=False)
+        atomic_to_csv(make_clean_df(combined), run_dir() / f'validation/{cond}_Q00_clean.csv', index=False)
         print(f'Aggregated {cond} vs Q00: {len(combined)} rows')
 
 
 def test(comparison):
+    protect_stage(run_dir(), "test")
     stage_path('test')
     for cond in (['Q05', 'Q50'] if comparison == 'both' else [comparison]):
         path = run_dir() / f'validation/{cond}_Q00_clean.csv'
@@ -160,13 +174,14 @@ def test(comparison):
         mod = importlib.import_module(f'kremer_debo_analysis_probit_{cond}')
         # Preserve console output as well as the original hypothesis-result CSV.
         import contextlib
-        with (run_dir() / f'test/{cond}_Q00_report.txt').open('w') as report:
+        with atomic_output(run_dir() / f'test/{cond}_Q00_report.txt') as report:
             with contextlib.redirect_stdout(report):
                 mod.main(gpt4o_path=str(path), output_dir=str(run_dir() / 'test'))
         print(f'Test complete: {run_dir() / "test" / (cond + "_Q00_report.txt")}')
 
 
 def preview():
+    protect_stage(run_dir(), 'preview')
     import shared_prompts as p
     m = manifest()
     record = {(1, 1): dict(wait_time=1, subject_type=0, product_value=3.5, product_name='A-pod')}
@@ -177,7 +192,7 @@ def preview():
             + "\n\n=== MESSAGE 2 | USER: instance details + navigation + answer request ===\n"
             + p.get_period_prompt((1, 1), record, m['prompts']['navigations'][0])
         )
-        (run_dir() / f'{cond}_prompt_preview.txt').write_text(text)
+        atomic_write(run_dir() / f'{cond}_prompt_preview.txt', text.encode())
     print('Saved Q50/Q05/Q00 prompt previews (first navigation candidate).')
 
 
@@ -191,6 +206,7 @@ def main():
     parser.add_argument('--session', type=int)
     parser.add_argument('--comparison', default='both')
     args = parser.parse_args()
+    protect_stage(run_dir(), args.stage)
     for stage in ['training', 'validation', 'test']:
         (run_dir() / stage).mkdir(exist_ok=True)
     directory = run_dir() / ('training' if args.stage in ('train', 'fit') else 'validation')

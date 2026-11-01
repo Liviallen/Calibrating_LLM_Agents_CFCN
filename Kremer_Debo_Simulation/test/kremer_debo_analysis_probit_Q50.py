@@ -27,7 +27,10 @@ Both are correct - they represent the same phenomenon (almost no purchases at w4
 The key hypothesis tests (w1q50, wait_time_q50) match well because they don't suffer
 from separation issues. These are the coefficients of interest for the research question.
 """
-
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from file_utils import atomic_to_csv, atomic_write
 import pandas as pd
 import numpy as np
 from scipy import stats
@@ -501,7 +504,7 @@ def main(gpt4o_path=None, output_dir=None):
     ])
     
     output_path = os.path.join(output_dir or script_dir, 'navigation_analysis_Q50_vs_Q00.csv')
-    results_df.to_csv(output_path, index=False)
+    atomic_to_csv(results_df, output_path, index=False)
     print(f"\nResults saved to: {output_path}")
     
     return results_df
